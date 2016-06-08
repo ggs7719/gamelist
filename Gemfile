@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'bootstrap-sass', '~> 3.3.6'
+
+gem "kaminari"
+
 gem 'pg'
 
 gem 'rails_12factor', group: :production

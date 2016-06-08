@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.all
+    @events = Event.page(params[:page]).per(5)
   end
 
   def new
@@ -18,25 +18,34 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.save
-    redirect_to events_url
+    if @event.save
+       redirect_to events_url
+    else
+      render :action => :new
+    end
+    flash[:notice] = "成功新增資料！"
   end
 
   def update
     @event = Event.find(params[:id])
-    @event.update(event_params)
-    redirect_to event_url(@event)
+    if @event.update(event_params)
+       redirect_to event_url(@event)
+    else
+      render :action => :edit
+    end
+    flash[:notice] = "成功更新資料！"
   end
 
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
     redirect_to events_url
+    flash[:alert] = "成功刪除資料！"
   end
 
   private
 
   def event_params
-  params.require(:event).permit(:name, :description)
+  params.require(:event).permit(:name, :description, :status)
   end
 end

@@ -1,0 +1,7 @@
+<% if @event.errors.any? %>
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= SAVE errors %></li>
+      <% end %>
+      </ul>
+<% end %>

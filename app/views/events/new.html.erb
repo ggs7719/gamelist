@@ -1,10 +1,19 @@
-<%= form_for @event, :url => events_path do |f| %>
+<%= form_for @event, :url => events_path, :class => "form" do |f| %>
 
-    <%= f.label :name, "Name" %>
-    <%= f.text_field :name %>
+<div class="form-group">
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name, :class => "form-control" %>
+</div>
 
-    <%= f.label :description, "Description" %>
-    <%= f.text_area :description %>
+<div class="form-group">
+  <%= f.label :description, "Description" %>
+  <%= f.text_area :description, :class => "form-control" %>
+</div>
 
-    <%= f.submit "Create" %>
+<div class="form-group">
+  <%= f.label :status, "Status" %>
+  <%= f.text_area :status, :class => "form-control" %>
+</div>
+
+<%= f.submit "Create", :class => "btn btn-primary" %>
 <% end %>

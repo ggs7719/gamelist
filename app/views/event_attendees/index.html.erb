@@ -1,0 +1,14 @@
+<ul>
+<% @attendees.each do |attendee| %>
+	<li>
+	  <%= attendee.name %>
+	  <%= link_to '詳情', event_attendee_path(@event, attendee) %>
+	  <%= link_to '編輯', edit_event_attendee_path(@event, attendee) %>
+	  <%= link_to '刪除', event_attendee_path(@event, attendee),
+	                            :method => :delete %>
+	</li>
+<% end %>
+
+</ul>
+
+	  <%= link_to '新留言', new_event_attendee_path(@event) %>

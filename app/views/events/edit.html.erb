@@ -1,19 +1,19 @@
 <%= form_for @event, :url => event_path(@event), :method => :patch, :class => "form" do |f| %>
 
 <div class="form-group">
-  <%= f.label :name, "Name" %>
+  <%= f.label :name, "主題" %>
   <%= f.text_field :name, :class => "form-control" %>
 </div>
 
 <div class="form-group">
-  <%= f.label :description, "Description" %>
+  <%= f.label :description, "內容" %>
   <%= f.text_area :description, :class => "form-control" %>
 </div>
 
 <div class="form-group">
-  <%= f.label :status, "Status" %>
+  <%= f.label :status, "狀態" %>
   <%= f.text_area :status, :class => "form-control" %>
 </div>
 
-<%= f.submit "Update", :class => "btn btn-primary" %>
+<%= f.submit "更新", :class => "btn btn-primary" %>
 <% end %>

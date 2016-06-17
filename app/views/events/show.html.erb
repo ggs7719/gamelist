@@ -10,8 +10,7 @@
 <%= @event.status %>
 </div>
 
-<div class="form-group">
-<p><%= @event.category.try(:name) %></p>
-</div>
+<p>分類: <%= @event.category.try(:name) %><p>
+
 
 <p><%= link_to '回到首頁', events_path, :class => "btn btn-primary" %></p>

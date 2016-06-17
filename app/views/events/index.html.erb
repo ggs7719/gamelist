@@ -10,6 +10,7 @@
     <%= link_to "詳情", event_path(event), :class => "btn btn-primary" %>
     <%= link_to '更新', edit_event_path(event), :class => "btn btn-warning" %>
     <%= link_to '刪除', event_path(event), :method => :delete, :data => { :confirm => "認真的？" }, :class => "btn btn-danger" %>
+    <%= link_to '留言', event_attendees_path(event), :class => "btn btn-primary" %>
     </td>
   </tr>
 <% end %>

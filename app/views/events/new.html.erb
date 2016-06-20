@@ -15,5 +15,7 @@
   <%= f.text_area :status, :class => "form-control" %>
 </div>
 
+<%= f.collection_select(:category_id, Category.all, :id, :name) %>
+
 <%= f.submit "發表", :class => "btn btn-primary" %>
 <% end %>

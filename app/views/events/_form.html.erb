@@ -1,8 +1,8 @@
 <% if @event.errors.any? %>
       <ul>
-      <%= f.collection_select(:category_id, Category.all, :id, :name) %>
       <% @event.errors.full_messages.each do |msg| %>
         <li><%= SAVE errors %></li>
       <% end %>
       </ul>
 <% end %>
+

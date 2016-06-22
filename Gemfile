@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'omniauth-facebook'
+
+gem 'devise'
+
 gem 'bootstrap-sass', '~> 3.3.6'
 
 gem "kaminari"

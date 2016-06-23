@@ -7,25 +7,39 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% if current_user %>
+    您好，<%= current_user.email %>
+    <%= link_to('登出', destroy_user_session_path, :method => :delete) %>
+    <%= link_to('修改密碼', edit_registration_path(:user)) %>
+  <% else %>
+    <%= link_to('註冊', new_registration_path(:user)) %>
+    <%= link_to('登入', new_session_path(:user)) %>
+  <% end %>
 
 <div class="container">
   <div class="row">
     <div class="col-md-12"> 
+      
       <% if flash[:notice].present? %>
         <div class="alert alert-success" role="alert">
           <%= flash[:notice] %>
         </div>
       <% end %>
+
       <% if flash[:alert].present? %>
         <div class="alert alert-danger" role="alert">
           <%= flash[:alert] %>  
       </div>
       <% end %>
-
+      
       <%= yield %>
     </div>
   </div>
+
+<p><%= link_to '回到首頁', events_path, :class => "btn btn-primary" %></p>
+
 </div>
+
 
 </body>
 </html>

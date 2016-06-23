@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  
+  root :to => "welcome#index"
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users
+  
   resources :events do
     resources :attendees, :controller => 'event_attendees'
   end
@@ -8,7 +11,6 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'events#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

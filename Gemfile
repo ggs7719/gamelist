@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem "select2-rails"
+
 gem 'omniauth-facebook'
 
 gem 'devise'

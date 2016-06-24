@@ -1,9 +1,18 @@
 namespace :dev do
   task :fake => :environment do
-    Topic.delete_all
-      
-    100.times do
-      Topic.create!( :subject => Faker::Lorem.sentence, :content => Faker::Lorem.paragraph )
+    User.delete_all
+    Event.delete_all
+    Attendee.delete_all
+    
+    puts "Creating fake data!"
+
+    user = User.create!( :email => "ggs7719@gmail.com", :password => "candy0925")
+
+    100.times do |i|
+      e = Event.create( :name => Faker::App.name )
+      100.times do |j|
+      	e.attendees.create( :name => Faker::Name.name )
+      end
     end
  
   end

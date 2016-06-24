@@ -1,25 +1,33 @@
 <h1>Jimmy Hoo's 災情支援網</h1>
 <table class="table">
+
+
+
 <% @events.each do |event| %>
+
   <tr>
-    <td>
- 	<%= event.name %>
- 	</td>
+    <td><%= event.name %></td>
+
+    <td><%= event.user.try(:short_name) %></td>
 
     <td>
-      <%= event.user.try(:short_name) %>
-    </td>
-
- 	<td>
     <%= link_to "詳情", event_path(event), :class => "btn btn-primary" %>
     <%= link_to '更新', edit_event_path(event), :class => "btn btn-warning" %>
     <%= link_to '刪除', event_path(event), :method => :delete, :data => { :confirm => "認真的？" }, :class => "btn btn-danger" %>
     <%= link_to '留言', event_attendees_path(event), :class => "btn btn-primary" %>
     </td>
+
   </tr>
 <% end %>
+
+  <%= search_form_for @q do |f| %>
+    <%= f.label :name_cont, "主題搜尋" %>
+    <%= f.search_field :name_cont %>
+    <%= f.submit "GO!" %>
+  <% end %>
 
 </table>
 
 <%= paginate @events %>
+
 <%= link_to '發表新主題', new_event_path, :class => "btn btn-primary" %>

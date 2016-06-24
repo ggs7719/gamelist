@@ -7,9 +7,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
- 
-
   <% if current_user %>
       <%= link_to('登出', destroy_user_session_path, :method => :delete) %>
     <% else %>
@@ -45,10 +42,9 @@
     </div>
   </div>
 
-<p><%= link_to '回到首頁', events_path, :class => "btn btn-primary" %></p>
+  <p><%= link_to '回到首頁', events_path, :class => "btn btn-primary" %></p>
 
 </div>
-
 
 </body>
 </html>

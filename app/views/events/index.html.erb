@@ -19,14 +19,13 @@
 
   </tr>
 <% end %>
+</table>
 
   <%= search_form_for @q do |f| %>
     <%= f.label :name_cont, "主題搜尋" %>
     <%= f.search_field :name_cont %>
     <%= f.submit "GO!" %>
   <% end %>
-
-</table>
 
 <%= paginate @events %>
 

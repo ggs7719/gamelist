@@ -1,7 +1,6 @@
 <h1>Jimmy Hoo's 災情支援網</h1>
+
 <table class="table">
-
-
 
 <% @events.each do |event| %>
 
@@ -11,6 +10,8 @@
     <td><%= event.user.try(:short_name) %></td>
 
     <td>
+    回覆數<%= event.attendee_ids.count %>
+    最後回覆<%= event.attendees.last.updated_at %>
     <%= link_to "詳情", event_path(event), :class => "btn btn-primary" %>
     <%= link_to '更新', edit_event_path(event), :class => "btn btn-warning" %>
     <%= link_to '刪除', event_path(event), :method => :delete, :data => { :confirm => "認真的？" }, :class => "btn btn-danger" %>

@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 
   def index
     @q = Event.search(params[:q])
-    @events = @q.result(distinct: true).page(params[:page]).per(5)
+    @events = @q.result(distinct: true).page(params[:page]).per(5).order("id DESC")
   end
 
   def new
@@ -34,6 +34,9 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
+    if params[:_remove_logo] == "1"
+      @event.logo = nil
+    end
     if @event.update(event_params)
        redirect_to event_url(@event)
     else
@@ -52,6 +55,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-  params.require(:event).permit(:name, :description, :status, :category_id)
+  params.require(:event).permit(:name, :logo, :description, :status, :category_id)
   end
 end

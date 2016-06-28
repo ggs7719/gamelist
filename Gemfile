@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem "paperclip"
+
 gem 'ransack'
 
 gem "select2-rails"

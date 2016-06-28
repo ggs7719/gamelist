@@ -6,6 +6,12 @@
 <%= @event.description %>
 </div>
 
+<% if @event.logo.exists? %>
+  <%= image_tag( @event.logo.url(:medium) ) %>
+<% else %>
+  尚無圖片
+<% end %>
+
 <div class="form-group">
 <%= @event.status %>
 </div>

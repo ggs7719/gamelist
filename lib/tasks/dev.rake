@@ -1,6 +1,6 @@
 namespace :dev do
 
-  task :rebuild => ["db:grop", "db:setup", :fake]
+  task :rebuild => ["db:drop", "db:setup", :fake]
   # db:setup == db:create, db:schema:load, db;seed
 
   task :fake => :environment do

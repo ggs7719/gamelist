@@ -16,6 +16,9 @@ end
 def create
   @attendee = @event.attendees.build( attendee_params )
   if @attendee.save
+    @event.attendee_count += 1
+    @event.attendee_update = @attendee.created_at
+    @event.save
     redirect_to event_attendees_url( @event )
   else
     render :action => :new
@@ -39,7 +42,10 @@ end
 
 def destroy
   @attendee = @event.attendees.find( params[:id] )
-  @attendee.destroy
+  if @attendee.destroy
+    @event.attendee_count -= 1
+    @event.save
+  end
 
   redirect_to event_attendees_url( @event )
 end

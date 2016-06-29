@@ -56,13 +56,17 @@ class EventsController < ApplicationController
     @event = Event.find( params[:id] )
 
     subscription = @event.finy_subscription_by(current_user)
+
     if subscription
       # do nothing
     else
       @subscription = @event.subscriptions.create!( :user => current_user )
     end
-
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js { render "subscription" }
+    end
+    
   end
 
   def unsubscribe
@@ -71,7 +75,10 @@ class EventsController < ApplicationController
     subscription = @event.finy_subscription_by(current_user)
     subscription.destroy
 
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js { render "subscription" }
+    end
   end
 
   private

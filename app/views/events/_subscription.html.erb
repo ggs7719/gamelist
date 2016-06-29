@@ -1,0 +1,5 @@
+<% if subscription %>
+  <%= link_to "取消訂閱", unsubscribe_event_path(@event), :remote => true ,:method => :post, :class => "btn btn-primary" %>
+<% else %>
+  <%= link_to "訂閱", subscribe_event_path(@event), :remote => true ,:method => :post, :class => "btn btn-primary" %>
+<% end %>

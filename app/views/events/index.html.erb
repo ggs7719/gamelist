@@ -16,12 +16,15 @@
     <%= link_to '更新', edit_event_path(event), :class => "btn btn-warning" %>
     <%= link_to '刪除', event_path(event), :method => :delete, :data => { :confirm => "認真的？" }, :class => "btn btn-danger" %>
     <%= link_to '留言', event_attendees_path(event), :class => "btn btn-primary" %>
+    <span id="subscription-area">
     <% subscription = event.finy_subscription_by(current_user) %>
   <% if subscription %>
-    <%= link_to "取消訂閱", unsubscribe_event_path(event), :method => :post, :class => "btn btn-primary" %>
+    <%= link_to "取消訂閱", unsubscribe_event_path(event), :remote => true, :method => :post, :class => "btn btn-primary" %>
   <% else %>
-    <%= link_to "訂閱", subscribe_event_path(event), :method => :post, :class => "btn btn-primary" %>
+    <%= link_to "訂閱", subscribe_event_path(event), :remote => true, :method => :post, :class => "btn btn-primary" %>
   <% end %>
+  </span>
+
     </td>
 
   </tr>

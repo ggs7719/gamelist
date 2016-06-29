@@ -52,6 +52,28 @@ class EventsController < ApplicationController
     flash[:alert] = "成功刪除資料！"
   end
 
+  def subscribe
+    @event = Event.find( params[:id] )
+
+    subscription = @event.finy_subscription_by(current_user)
+    if subscription
+      # do nothing
+    else
+      @subscription = @event.subscriptions.create!( :user => current_user )
+    end
+
+    redirect_to :back
+  end
+
+  def unsubscribe
+    @event = Event.find( params[:id] )
+
+    subscription = @event.finy_subscription_by(current_user)
+    subscription.destroy
+
+    redirect_to :back
+  end
+
   private
 
   def event_params

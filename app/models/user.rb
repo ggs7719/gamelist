@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
+  has_many :subscriptions
+  has_many :subscribed_topics, :through => :likes, :source => :topic
+
 
   has_many :events
 

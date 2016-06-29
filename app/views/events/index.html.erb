@@ -28,7 +28,6 @@
     <%= f.submit "GO!" %>
     <%= sort_link(@q, :attendee_count, '最多回覆', default_order: :desc) %>
     <%= sort_link(@q, :attendee_update, '最新回覆', default_order: :desc) %>
-
   <% end %>
 
 <%= paginate @events %>

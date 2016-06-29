@@ -50,6 +50,35 @@ def destroy
   redirect_to event_attendees_url( @event )
 end
 
+def like
+    @attendee = Attendee.find( params[:attendee_id] )
+
+    like = @attendee.finy_like_by(current_user)
+
+    if like
+      # do nothing
+    else
+      @like = @attendee.likes.create!( :user => current_user )
+    end
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js { render "like" }
+    end
+    
+  end
+
+  def unlike
+    @attendee = Attendee.find( params[:attendee_id] )
+
+    like = @attendee.finy_like_by(current_user)
+    like.destroy
+
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js { render "like" }
+    end
+  end
+
 protected
 
 def find_event

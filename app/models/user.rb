@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :subscriptions
   has_many :subscribed_topics, :through => :likes, :source => :topic
 
-
+  has_many :likes
   has_many :events
 
   def short_name

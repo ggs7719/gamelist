@@ -5,10 +5,14 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   
   resources :events do
-    resources :attendees, :controller => 'event_attendees'
+    resources :attendees, :controller => 'event_attendees' do
+      post :like
+      post :unlike
+    end
     member do
       post :subscribe
       post :unsubscribe
+
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

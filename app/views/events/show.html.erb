@@ -7,11 +7,11 @@
 </div>
 
 <% subscription = @event.finy_subscription_by(current_user) %>
-  <% if subscription %>
-    <%= link_to "取消訂閱", unsubscribe_event_path(@event), :method => :post, :class => "btn btn-primary" %>
-  <% else %>
-    <%= link_to "訂閱", subscribe_event_path(@event), :method => :post, :class => "btn btn-primary" %>
-  <% end %>
+<% if subscription %>
+  <%= link_to "取消訂閱", unsubscribe_event_path(@event), :method => :post, :class => "btn btn-primary" %>
+<% else %>
+  <%= link_to "訂閱", subscribe_event_path(@event), :method => :post, :class => "btn btn-primary" %>
+<% end %>
 
 <% if @event.logo.exists? %>
   <%= image_tag( @event.logo.url(:medium) ) %>

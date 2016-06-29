@@ -1,12 +1,19 @@
 <ul>
 <% @attendees.each do |attendee| %>
-	<li>
+  <li>
 	  <%= attendee.name %>
 	  <%= link_to '詳情', event_attendee_path(@event, attendee) %>
 	  <%= link_to '編輯', edit_event_attendee_path(@event, attendee) %>
-	  <%= link_to '刪除', event_attendee_path(@event, attendee),
-	                            :method => :delete %>
-	</li>
+	  <%= link_to '刪除', event_attendee_path(@event, attendee), :method => :delete %>
+	<span id="like-area">
+      <% like = attendee.finy_like_by(current_user) %>
+      <% if like %>
+        <%= link_to "收回讚", event_attendee_unlike_path(@event, attendee), :remote => true, :method => :post, :class => "btn btn-primary" %>
+      <% else %>
+        <%= link_to "讚", event_attendee_like_path(@event, attendee), :remote => true, :method => :post, :class => "btn btn-primary" %>
+     <% end %>
+    </span>
+  </li>
 <% end %>
 
 </ul>
